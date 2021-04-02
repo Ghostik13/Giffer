@@ -6,10 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
+import com.example.giffer.R
 import com.example.giffer.model.Data
 import kotlinx.android.synthetic.main.gif_item.view.*
 
-class GifAdapter : RecyclerView.Adapter<GifAdapter.GifViewHolder>() {
+class GifAdapter(private val onClick: (Data) -> Unit) :
+    RecyclerView.Adapter<GifAdapter.GifViewHolder>() {
 
     private var gifList = emptyList<Data>()
 
@@ -17,7 +19,7 @@ class GifAdapter : RecyclerView.Adapter<GifAdapter.GifViewHolder>() {
         val view = LayoutInflater
             .from(parent.context)
             .inflate(
-                com.example.giffer.R.layout.gif_item,
+                R.layout.gif_item,
                 parent,
                 false
             )
@@ -30,6 +32,10 @@ class GifAdapter : RecyclerView.Adapter<GifAdapter.GifViewHolder>() {
 
     override fun onBindViewHolder(holder: GifViewHolder, position: Int) {
         setGifToHolder(holder, position)
+        val currentGif = gifList[position]
+        holder.itemView.gif_element.setOnClickListener {
+            onClick(currentGif)
+        }
     }
 
     private fun setGifToHolder(
