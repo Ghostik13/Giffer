@@ -49,6 +49,7 @@
             <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/image_logo"
                 style="?logoGif"
+                android:src="@drawable/giphylogo"
                 app:layout_constraintBottom_toBottomOf="@+id/logo"
                 app:layout_constraintEnd_toStartOf="@+id/logo"
                 app:layout_constraintTop_toTopOf="@+id/logo" />
