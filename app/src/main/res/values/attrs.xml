@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="bottomNavigation" format="reference" />
+    <attr name="logoText" format="reference" />
+    <attr name="categoryText" format="reference" />
+    <attr name="logoGif" format="reference" />
+    <attr name="sloganText" format="reference" />
+    <attr name="backgroundPage" format="reference" />
+    <attr name="cardViewGif" format="reference" />
+    <attr name="gifDescription" format="reference" />
+    <attr name="copyButton" format="reference" />
+    <attr name="shareButton" format="reference" />
+</resources>

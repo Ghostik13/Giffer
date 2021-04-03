@@ -5,6 +5,82 @@
         <item name="backgroundTint">@color/black_l</item>
         <item name="itemIconTint">@color/bottom_navigation_colors</item>
         <item name="itemTextColor">@color/bottom_navigation_colors</item>
+        <item name="menu">@menu/menu</item>
+        <item name="android:layout_gravity">bottom</item>
+    </style>
+
+    <style name="logo_text">
+        <item name="android:layout_marginStart">48dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:fontFamily">@font/argentumsans</item>
+        <item name="android:text">@string/giffer</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">40sp</item>
+    </style>
+
+    <style name="category_text">
+        <item name="android:layout_marginStart">15dp</item>
+        <item name="android:fontFamily">@font/argentumsansmedium</item>
+        <item name="android:text">@string/trends_are_like</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="slogan_text">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:fontFamily">@font/argentumsansextralight</item>
+        <item name="android:text">@string/gif_yourself_a_break</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="logo_gif">
+        <item name="android:layout_width">45dp</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:src">@drawable/giphylogo</item>
+    </style>
+
+    <style name="background_page">
+        <item name="android:background">@color/semi_black</item>
+    </style>
+
+    <style name="card_view_gif">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:layout_marginStart">15dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="cardCornerRadius">20dp</item>
+    </style>
+
+    <style name="gif_description">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:fontFamily">@font/argentumsansmedium</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="share_button">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_marginStart">130dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:backgroundTint">@color/black_l</item>
+        <item name="android:src">@drawable/ic_share</item>
+    </style>
+
+    <style name="copy_button">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_marginEnd">130dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:backgroundTint">@color/black_l</item>
+        <item name="android:src">@drawable/ic_copy</item>
     </style>
 
 </resources>

@@ -16,5 +16,4 @@ object RetrofitInstance {
     val api: GiphyApi by lazy {
         retrofit.create(GiphyApi::class.java)
     }
-
 }

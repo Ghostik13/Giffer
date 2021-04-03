@@ -53,26 +53,22 @@ class SearchGifsFragment : Fragment() {
     }
 
     private fun initSearchGifs(view: View) {
-        try {
-            val noGifs = "Sorry, no gifs found..."
-            view.search_button.setOnClickListener {
-                val category = edit_text.text.toString()
-                category_search.text = edit_text.text.toString()
-                category_search.visibility = View.VISIBLE
-                viewModel.getGifs(category)
-                viewModel.gifResponse.observe(viewLifecycleOwner, Observer { response ->
-                    if (response.isSuccessful) {
-                        response.body()?.data?.let { adapter.setData(it) }
-                        if (response.body()!!.data.isEmpty()) {
-                            category_search.text = noGifs
-                        }
-                    } else {
-                        Toast.makeText(this.context, response.code(), Toast.LENGTH_SHORT).show()
+        val noGifs = "Sorry, no gifs found..."
+        view.search_button.setOnClickListener {
+            val category = edit_text.text.toString()
+            category_search.text = edit_text.text.toString()
+            category_search.visibility = View.VISIBLE
+            viewModel.getGifs(category)
+            viewModel.gifResponse.observe(viewLifecycleOwner, Observer { response ->
+                if (response.isSuccessful) {
+                    response.body()?.data?.let { adapter.setData(it) }
+                    if (response.body()!!.data.isEmpty()) {
+                        category_search.text = noGifs
                     }
-                })
-            }
-        } catch (e: Exception) {
-            Toast.makeText(this.context, R.string.connection_lost, Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this.context, response.code(), Toast.LENGTH_SHORT).show()
+                }
+            })
         }
     }
 }

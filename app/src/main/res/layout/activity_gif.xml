@@ -1,48 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GifActivity"
-    android:background="@color/semi_black">
+    android:background="@color/semi_black"
+    tools:context=".GifActivity">
 
     <TextView
-        android:textColor="@color/white"
-        android:id="@+id/textView"
+        android:id="@+id/logo"
+        style="?logoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/argentumsans"
-        android:text="@string/giffer"
-        android:textSize="40sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/image_logo"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/giphylogo"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
-        app:layout_constraintEnd_toStartOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="@+id/textView" />
+        style="?logoGif"
+        app:layout_constraintBottom_toBottomOf="@+id/logo"
+        app:layout_constraintEnd_toStartOf="@+id/logo"
+        app:layout_constraintTop_toTopOf="@+id/logo" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/argentumsansextralight"
-        android:text="@string/gif_yourself_a_break"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="@+id/textView" />
+        android:id="@+id/slogan"
+        style="?sloganText"
+        app:layout_constraintBottom_toBottomOf="@+id/logo"
+        app:layout_constraintStart_toEndOf="@+id/logo"
+        app:layout_constraintTop_toTopOf="@+id/logo" />
 
     <ImageView
         android:id="@+id/gif_main"
@@ -52,43 +38,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
         tools:src="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/gif_title"
+        style="@style/gif_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textSize="20sp"
-        android:fontFamily="@font/argentumsansmedium"
-        android:text="TextView"
-        android:gravity="center"
-        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gif_main" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/share_btn"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="130dp"
-        android:layout_marginTop="5dp"
-        android:backgroundTint="@color/black_l"
-        android:src="@drawable/ic_share"
-        android:text="share"
+        style="?shareButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gif_title" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/copy_btn"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="130dp"
-        android:backgroundTint="@color/black_l"
+        style="?copyButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gif_title"
-        app:srcCompat="@drawable/ic_copy" />
+        app:layout_constraintTop_toBottomOf="@+id/gif_title" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

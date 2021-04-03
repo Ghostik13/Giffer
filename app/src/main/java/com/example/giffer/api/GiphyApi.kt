@@ -19,5 +19,4 @@ interface GiphyApi {
         @Query("api_key") apiKey: String,
         @Query("limit") limit: Int
     ): Response<MainGif>
-
 }
