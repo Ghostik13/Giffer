@@ -38,10 +38,7 @@ class GifAdapter(private val onClick: (Data) -> Unit) :
         }
     }
 
-    private fun setGifToHolder(
-        holder: GifViewHolder,
-        position: Int
-    ) {
+    private fun setGifToHolder(holder: GifViewHolder, position: Int) {
         val circularProgressDrawable = CircularProgressDrawable(holder.itemView.gif_element.context)
         circularProgressDrawable.strokeWidth = 5f
         circularProgressDrawable.centerRadius = 30f

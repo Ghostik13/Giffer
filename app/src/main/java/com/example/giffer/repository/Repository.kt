@@ -14,5 +14,4 @@ class Repository {
     suspend fun getTrendGifs(): Response<MainGif> {
         return RetrofitInstance.api.getTrendGifs(ANDROID_SDK_KEY, 50)
     }
-
 }

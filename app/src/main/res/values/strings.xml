@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">Giffer</string>
     <string name="search">Input tag …</string>
+    <string name="giffer">GIFFER</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="trending">Trending</string>
+    <string name="searching">Search</string>
+    <string name="trends_are_like">Trends are like…</string>
+
+    <string name="copy">URL copied to the clipboard</string>
+    <string name="connection_lost">Seems like there is no connection …</string>
+    <string name="gif_yourself_a_break">Gif yourself a break</string>
 </resources>

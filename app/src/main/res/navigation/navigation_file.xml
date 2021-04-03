@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_file"
+    app:startDestination="@id/trendGifsFragment">
+
+    <fragment
+        android:id="@+id/trendGifsFragment"
+        android:name="com.example.giffer.TrendGifsFragment"
+        android:label="fragment_trend_gifs"
+        tools:layout="@layout/fragment_trend_gifs" />
+
+    <fragment
+        android:id="@+id/searchGifsFragment"
+        android:name="com.example.giffer.SearchGifsFragment"
+        android:label="fragment_search_gifs"
+        tools:layout="@layout/fragment_search_gifs" />
+
+</navigation>
