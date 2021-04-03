@@ -16,7 +16,6 @@ import com.example.giffer.repository.Repository
 import com.example.giffer.util.Constants
 import kotlinx.android.synthetic.main.fragment_search_gifs.*
 import kotlinx.android.synthetic.main.fragment_search_gifs.view.*
-import kotlinx.android.synthetic.main.fragment_trend_gifs.view.*
 
 class SearchGifsFragment : Fragment() {
 

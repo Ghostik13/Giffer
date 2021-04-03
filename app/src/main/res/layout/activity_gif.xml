@@ -63,6 +63,7 @@
         android:textSize="20sp"
         android:fontFamily="@font/argentumsansmedium"
         android:text="TextView"
+        android:gravity="center"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
