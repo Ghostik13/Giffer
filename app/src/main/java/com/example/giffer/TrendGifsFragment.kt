@@ -1,6 +1,5 @@
 package com.example.giffer
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,23 +11,20 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.giffer.adapter.GifAdapter
 import com.example.giffer.repository.Repository
-import com.example.giffer.util.Constants
 import kotlinx.android.synthetic.main.fragment_trend_gifs.view.*
+import retrofit2.Response
 
 class TrendGifsFragment : Fragment() {
 
     private lateinit var viewModel: MainViewModel
+    private lateinit var recyclerView: RecyclerView
 
     private val adapter by lazy {
         GifAdapter {
-            val intent = Intent(this.context, GifActivity::class.java)
-            intent.putExtra(Constants.CURRENT_GIF_URL, it.images.original.url)
-            intent.putExtra(Constants.CURRENT_GIF_TITLE, it.title)
+            val intent = viewModel.initIntent(requireContext(), it)
             startActivity(intent)
         }
     }
-
-    private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
