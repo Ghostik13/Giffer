@@ -28,28 +28,28 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     private val gifResponse: LiveData<Response<MainGif>> = _gifResponse
     private val gifTrendResponse: LiveData<Response<MainGif>> = _gifTrendResponse
 
+    private lateinit var recyclerView: RecyclerView
+
     private val noGifs = "Sorry, no gifs found..."
 
-    private lateinit var recyclerView: RecyclerView
+    var category = ""
 
     fun getGifs(
         query: String,
         adapter: GifAdapter,
         context: Context,
-        et: EditText,
-        tv: TextView
+        et: EditText
     ) {
         viewModelScope.launch {
             val response = repository.getGifs(query)
             _gifResponse.value = response
         }
-        tv.text = et.text.toString()
-        tv.visibility = View.VISIBLE
+        category = et.text.toString()
         gifResponse.observeForever { response ->
             if (response.isSuccessful) {
                 response.body()?.data?.let { adapter.setData(it) }
                 if (response.body()!!.data.isEmpty()) {
-                    tv.text = noGifs
+                    category = noGifs
                 }
             } else {
                 Toast.makeText(context, response.code(), Toast.LENGTH_SHORT).show()

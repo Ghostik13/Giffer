@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.giffer.adapter.GifAdapter
 import com.example.giffer.repository.Repository
+import kotlinx.android.synthetic.main.fragment_search_gifs.*
 import kotlinx.android.synthetic.main.fragment_search_gifs.view.*
 
 class SearchGifsFragment : Fragment() {
@@ -35,14 +36,15 @@ class SearchGifsFragment : Fragment() {
     }
 
     private fun initSearchGifs(view: View) {
+        view.category_search.text = viewModel.category
         view.search_button.setOnClickListener {
             viewModel.getGifs(
                 view.edit_text.text.toString(),
                 adapter,
                 requireContext(),
-                view.edit_text,
-                view.category_search
+                view.edit_text
             )
+            view.category_search.text = viewModel.category
         }
     }
 }
