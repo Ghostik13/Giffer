@@ -25,8 +25,10 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     private val _gifResponse: MutableLiveData<Response<MainGif>> = MutableLiveData()
     private val _gifTrendResponse: MutableLiveData<Response<MainGif>> = MutableLiveData()
 
-    private val gifResponse: LiveData<Response<MainGif>> = _gifResponse
-    private val gifTrendResponse: LiveData<Response<MainGif>> = _gifTrendResponse
+    private val gifResponse: LiveData<Response<MainGif>>
+        get() = _gifResponse
+    private val gifTrendResponse: LiveData<Response<MainGif>>
+        get() = _gifTrendResponse
 
     private lateinit var recyclerView: RecyclerView
 
