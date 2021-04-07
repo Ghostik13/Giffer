@@ -56,5 +56,4 @@ class GifAdapter(private val onClick: (Data) -> Unit) :
     }
 
     class GifViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
-
 }
