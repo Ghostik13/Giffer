@@ -11,10 +11,11 @@ import com.example.giffer.api.RetrofitInstance
 import com.example.giffer.repository.Repository
 import kotlinx.android.synthetic.main.fragment_search_gifs.*
 import kotlinx.android.synthetic.main.fragment_search_gifs.view.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchGifsFragment : Fragment() {
 
-    private lateinit var viewModel: MainViewModel
+    private val viewModel: MainViewModel by viewModel()
 
     private val adapter by lazy {
         GifAdapter {
@@ -27,9 +28,6 @@ class SearchGifsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val repository = Repository(RetrofitInstance)
-        val viewModelFactory = MainViewModelFactory(repository)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
         val view = inflater.inflate(R.layout.fragment_search_gifs, container, false)
         viewModel.initRecycler(adapter, view.recycler_view_search)
         initSearchGifs(view)
