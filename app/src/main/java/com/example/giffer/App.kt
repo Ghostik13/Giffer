@@ -19,8 +19,9 @@ class App : Application() {
                 listOf(
                     mainViewModelModule,
                     repository,
-                    retrofit,
-                    gifViewModelModule
+                    gifViewModelModule,
+                    netModule,
+                    apiModule
                 )
             )
         }
