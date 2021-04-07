@@ -6,16 +6,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_gif.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GifActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: GifViewModel
+    private val viewModel: GifViewModel by viewModel()
     private lateinit var clipboard: ClipboardManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gif)
-        viewModel = ViewModelProvider(this).get(GifViewModel::class.java)
         viewModel.initGif(intent, this, gif_main, gif_title)
         initButtons()
     }

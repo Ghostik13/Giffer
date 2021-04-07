@@ -5,14 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
 import com.example.giffer.adapter.GifAdapter
-import com.example.giffer.repository.Repository
 import kotlinx.android.synthetic.main.fragment_trend_gifs.view.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TrendGifsFragment : Fragment() {
 
-    private lateinit var viewModel: MainViewModel
+    private val viewModel: MainViewModel by viewModel()
 
     private val adapter by lazy {
         GifAdapter {
@@ -25,9 +24,6 @@ class TrendGifsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val repository = Repository()
-        val viewModelFactory = MainViewModelFactory(repository)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
         val view = inflater.inflate(R.layout.fragment_trend_gifs, container, false)
         viewModel.initRecycler(adapter, view.recycler_view_trends)
         viewModel.getTrendGifs(adapter)

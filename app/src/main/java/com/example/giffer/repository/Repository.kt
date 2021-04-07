@@ -5,13 +5,13 @@ import com.example.giffer.model.MainGif
 import com.example.giffer.util.Constants.Companion.ANDROID_SDK_KEY
 import retrofit2.Response
 
-class Repository {
+class Repository(private val retrofit: RetrofitInstance) {
 
     suspend fun getGifs(query: String): Response<MainGif> {
-        return RetrofitInstance.api.getGifs(ANDROID_SDK_KEY, 50, query)
+        return retrofit.api.getGifs(ANDROID_SDK_KEY, 50, query)
     }
 
     suspend fun getTrendGifs(): Response<MainGif> {
-        return RetrofitInstance.api.getTrendGifs(ANDROID_SDK_KEY, 50)
+        return retrofit.api.getTrendGifs(ANDROID_SDK_KEY, 50)
     }
 }
