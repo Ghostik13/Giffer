@@ -25,49 +25,28 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     private val _gifResponse: MutableLiveData<Response<MainGif>> = MutableLiveData()
     private val _gifTrendResponse: MutableLiveData<Response<MainGif>> = MutableLiveData()
 
-    private val gifResponse: LiveData<Response<MainGif>>
+    val gifResponse: LiveData<Response<MainGif>>
         get() = _gifResponse
-    private val gifTrendResponse: LiveData<Response<MainGif>>
+    val gifTrendResponse: LiveData<Response<MainGif>>
         get() = _gifTrendResponse
 
     private lateinit var recyclerView: RecyclerView
 
-    private val noGifs = "Sorry, no gifs found..."
-
+    val noGifs = "Sorry, no gifs found..."
     var category = ""
 
-    fun getGifs(
-        query: String,
-        adapter: GifAdapter,
-        context: Context,
-        et: EditText
-    ) {
+    fun getGifs(query: String, et: EditText) {
         viewModelScope.launch {
             val response = repository.getGifs(query)
             _gifResponse.value = response
         }
         category = et.text.toString()
-        gifResponse.observeForever { response ->
-            if (response.isSuccessful) {
-                response.body()?.data?.let { adapter.setData(it) }
-                if (response.body()!!.data.isEmpty()) {
-                    category = noGifs
-                }
-            } else {
-                Toast.makeText(context, response.code(), Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 
-    fun getTrendGifs(adapter: GifAdapter) {
+    fun getTrendGifs() {
         viewModelScope.launch {
             val response = repository.getTrendGifs()
             _gifTrendResponse.value = response
-        }
-        gifTrendResponse.observeForever { response ->
-            if (response.isSuccessful) {
-                response.body()?.data?.let { adapter.setData(it) }
-            }
         }
     }
 

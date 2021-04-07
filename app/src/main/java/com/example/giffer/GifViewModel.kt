@@ -8,8 +8,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.example.giffer.util.Constants
+import kotlinx.android.synthetic.main.gif_item.view.*
 
 class GifViewModel : ViewModel() {
 

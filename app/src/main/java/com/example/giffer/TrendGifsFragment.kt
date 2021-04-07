@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.example.giffer.adapter.GifAdapter
 import kotlinx.android.synthetic.main.fragment_trend_gifs.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import androidx.lifecycle.Observer
 
 class TrendGifsFragment : Fragment() {
 
@@ -26,7 +27,16 @@ class TrendGifsFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_trend_gifs, container, false)
         viewModel.initRecycler(adapter, view.recycler_view_trends)
-        viewModel.getTrendGifs(adapter)
+        initTrendGifs()
         return view
+    }
+
+    private fun initTrendGifs(){
+        viewModel.getTrendGifs()
+        viewModel.gifTrendResponse.observe(viewLifecycleOwner, Observer{ response ->
+            if (response.isSuccessful) {
+                response.body()?.data?.let { adapter.setData(it) }
+            }
+        })
     }
 }
