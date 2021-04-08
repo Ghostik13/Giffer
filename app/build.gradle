@@ -17,7 +17,6 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    //compile options needed
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -34,6 +33,10 @@ android {
     }
 
     dataBinding{
+        enabled = true
+    }
+
+    viewBinding{
         enabled = true
     }
 }

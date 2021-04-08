@@ -6,14 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.example.giffer.adapter.GifAdapter
+import com.example.giffer.databinding.FragmentSearchGifsBinding
 import kotlinx.android.synthetic.main.fragment_search_gifs.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchGifsFragment : Fragment() {
 
     private val viewModel: MainViewModel by viewModel()
+
+    private lateinit var binding: FragmentSearchGifsBinding
 
     private val adapter by lazy {
         GifAdapter {
@@ -26,14 +30,14 @@ class SearchGifsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_search_gifs, container, false)
-        viewModel.initRecycler(adapter, view.recycler_view_search)
-        initSearchGifs(view)
-        return view
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_search_gifs, container, false)
+        viewModel.initRecycler(adapter, binding.root.recycler_view_search)
+        initSearchGifs(binding.root)
+        return binding.root
     }
 
     private fun initSearchGifs(view: View) {
-        view.category_search.text = viewModel.category
+        binding.category = viewModel.category
         view.search_button.setOnClickListener {
             val query = view.edit_text.text.toString()
             val editText = view.edit_text
@@ -48,7 +52,7 @@ class SearchGifsFragment : Fragment() {
                     Toast.makeText(context, response.code(), Toast.LENGTH_SHORT).show()
                 }
             })
-            view.category_search.text = viewModel.category
+            binding.category = viewModel.category
         }
     }
 }

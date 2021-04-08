@@ -25,6 +25,7 @@ class GifAdapter(private val onClick: (Data) -> Unit) :
     override fun onBindViewHolder(holder: GifViewHolder, position: Int) {
         val currentGif = gifList[position]
         holder.binding.gif = currentGif.images.original
+        holder.binding.executePendingBindings()
         holder.itemView.gif_element.setOnClickListener {
             onClick(currentGif)
         }

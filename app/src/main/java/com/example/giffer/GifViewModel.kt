@@ -15,38 +15,29 @@ import kotlinx.android.synthetic.main.gif_item.view.*
 
 class GifViewModel : ViewModel() {
 
-    private var currentGif: String? = null
-    private var currentGifTitle: String? = null
+    var currentGif: String = ""
+    var currentGifTitle: String = ""
 
     val shareIntent = shareIntent()
 
-    fun initGif(intent: Intent, context: Context, gif: ImageView, title: TextView) {
+    fun initGif(intent: Intent) {
         val bundle = intent.extras
         if (bundle != null) {
-            currentGif = bundle.getString(Constants.CURRENT_GIF_URL)
-            currentGifTitle = bundle.getString(Constants.CURRENT_GIF_TITLE)
-        }
-        currentGif?.let {
-            Glide
-                .with(context)
-                .load(it)
-                .into(gif)
-        }
-        currentGifTitle?.let {
-            title.text = it
+            currentGif = bundle.getString(Constants.CURRENT_GIF_URL)!!
+            currentGifTitle = bundle.getString(Constants.CURRENT_GIF_TITLE)!!
         }
     }
 
     private fun shareIntent(): Intent {
         val sendIntent = Intent(Intent.ACTION_SEND)
-        sendIntent.putExtra(Intent.EXTRA_TEXT, currentGif.toString())
+        sendIntent.putExtra(Intent.EXTRA_TEXT, currentGif)
         sendIntent.type = "text/plain"
         return sendIntent
     }
 
     fun initCopyButton(context: Context, clipboard: ClipboardManager) {
 
-        val clip = ClipData.newPlainText("CopiedText", currentGif.toString())
+        val clip = ClipData.newPlainText("CopiedText", currentGif)
         clipboard.setPrimaryClip(clip)
         Toast.makeText(
             context,
