@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    style="?cardViewGif">
-    
-    <ImageView
-        android:id="@+id/gif_element"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true" />
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-</androidx.cardview.widget.CardView>
+    <data>
+        <variable
+            name="gif"
+            type="com.example.giffer.model.Original" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        style="?cardViewGif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/gif_element"
+            loadGifFromUrl="@{gif.url}"
+            android:src="@drawable/transperent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true" />
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
 
 
