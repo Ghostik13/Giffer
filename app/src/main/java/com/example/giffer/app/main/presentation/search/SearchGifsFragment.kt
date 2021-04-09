@@ -32,8 +32,10 @@ class SearchGifsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater,
-            R.layout.fragment_search_gifs, container, false)
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_search_gifs, container, false
+        )
         viewModel.initRecycler(adapter, binding.root.recycler_view_search)
         initSearchGifs(binding.root)
         return binding.root
@@ -47,9 +49,9 @@ class SearchGifsFragment : Fragment() {
             viewModel.getGifs(query, editText)
             viewModel.gifResponse.observe(viewLifecycleOwner, Observer { main ->
                 main.data.let { adapter.setData(it) }
-                    if (main.data.isEmpty()) {
-                        view.category_search.text = viewModel.noGifs
-                    }
+                if (main.data.isEmpty()) {
+                    view.category_search.text = viewModel.noGifs
+                }
             })
             binding.category = viewModel.category
         }

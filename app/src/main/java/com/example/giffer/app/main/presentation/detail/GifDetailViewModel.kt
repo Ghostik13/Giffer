@@ -32,7 +32,6 @@ class GifDetailViewModel : ViewModel() {
     }
 
     fun initCopyButton(context: Context, clipboard: ClipboardManager) {
-
         val clip = ClipData.newPlainText("CopiedText", currentGif)
         clipboard.setPrimaryClip(clip)
         Toast.makeText(

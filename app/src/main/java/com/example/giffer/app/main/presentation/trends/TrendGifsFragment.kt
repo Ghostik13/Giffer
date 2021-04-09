@@ -31,8 +31,10 @@ class TrendGifsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater,
-            R.layout.fragment_trend_gifs, container, false)
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_trend_gifs, container, false
+        )
         viewModel.initRecycler(adapter, binding.root.recycler_view_trends)
         initTrendGifs()
         return binding.root
