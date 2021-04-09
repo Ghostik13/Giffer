@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/semi_black"
-        tools:context=".GifActivity">
+        tools:context=".app.main.presentation.detail.GifDetailActivity">
 
         <TextView
             android:id="@+id/logo"

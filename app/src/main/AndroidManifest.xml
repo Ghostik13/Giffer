@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:name=".App"
         android:theme="@style/Theme.Giffer">
-        <activity android:name=".ShareActivity">
+        <activity android:name=".app.main.presentation.detail.ShareActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
 
@@ -21,7 +21,7 @@
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
-        <activity android:name=".GifActivity" />
+        <activity android:name=".app.main.presentation.detail.GifDetailActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

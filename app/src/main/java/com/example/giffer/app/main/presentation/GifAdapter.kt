@@ -1,10 +1,10 @@
-package com.example.giffer.adapter
+package com.example.giffer.app.main.presentation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.giffer.databinding.GifItemBinding
-import com.example.giffer.model.Data
+import com.example.giffer.app.main.data.model.Data
 import kotlinx.android.synthetic.main.gif_item.view.*
 
 class GifAdapter(private val onClick: (Data) -> Unit) :
@@ -15,7 +15,9 @@ class GifAdapter(private val onClick: (Data) -> Unit) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GifViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = GifItemBinding.inflate(layoutInflater, parent, false)
-        return GifViewHolder(binding)
+        return GifViewHolder(
+            binding
+        )
     }
 
     override fun getItemCount(): Int {

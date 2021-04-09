@@ -4,7 +4,7 @@
     <data>
         <variable
             name="gif"
-            type="com.example.giffer.model.Original" />
+            type="com.example.giffer.app.main.data.model.Original" />
     </data>
 
     <androidx.cardview.widget.CardView

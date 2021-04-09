@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/trendGifsFragment"
-        android:name="com.example.giffer.TrendGifsFragment"
+        android:name="com.example.giffer.app.main.presentation.trends.TrendGifsFragment"
         android:label="fragment_trend_gifs"
         tools:layout="@layout/fragment_trend_gifs" />
 
     <fragment
         android:id="@+id/searchGifsFragment"
-        android:name="com.example.giffer.SearchGifsFragment"
+        android:name="com.example.giffer.app.main.presentation.search.SearchGifsFragment"
         android:label="fragment_search_gifs"
         tools:layout="@layout/fragment_search_gifs" />
 

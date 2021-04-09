@@ -1,4 +1,4 @@
-package com.example.giffer
+package com.example.giffer.app.main.presentation.detail
 
 import android.content.ClipboardManager
 import android.content.Context
@@ -8,9 +8,9 @@ import com.example.giffer.databinding.ActivityGifBinding
 import kotlinx.android.synthetic.main.activity_gif.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class GifActivity : AppCompatActivity() {
+class GifDetailActivity : AppCompatActivity() {
 
-    private val viewModel: GifViewModel by viewModel()
+    private val viewModel: GifDetailViewModel by viewModel()
 
     private lateinit var clipboard: ClipboardManager
     private lateinit var binding: ActivityGifBinding

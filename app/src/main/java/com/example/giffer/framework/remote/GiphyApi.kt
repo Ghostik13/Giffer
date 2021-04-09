@@ -1,7 +1,6 @@
-package com.example.giffer.api
+package com.example.giffer.framework.remote
 
-import com.example.giffer.model.MainGif
-import retrofit2.Response
+import com.example.giffer.app.main.data.model.GifRemote
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -12,11 +11,11 @@ interface GiphyApi {
         @Query("api_key") apiKey: String,
         @Query("limit") limit: Int,
         @Query("q") category: String
-    ): Response<MainGif>
+    ): GifRemote
 
     @GET("trending")
     suspend fun getTrendGifs(
         @Query("api_key") apiKey: String,
         @Query("limit") limit: Int
-    ): Response<MainGif>
+    ): GifRemote
 }

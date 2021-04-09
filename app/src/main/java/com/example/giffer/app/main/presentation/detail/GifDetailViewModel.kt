@@ -1,19 +1,15 @@
-package com.example.giffer
+package com.example.giffer.app.main.presentation.detail
 
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
-import androidx.swiperefreshlayout.widget.CircularProgressDrawable
-import com.bumptech.glide.Glide
+import com.example.giffer.R
 import com.example.giffer.util.Constants
-import kotlinx.android.synthetic.main.gif_item.view.*
 
-class GifViewModel : ViewModel() {
+class GifDetailViewModel : ViewModel() {
 
     var currentGif: String = ""
     var currentGifTitle: String = ""

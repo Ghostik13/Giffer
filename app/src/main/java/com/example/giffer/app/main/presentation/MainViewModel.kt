@@ -1,34 +1,28 @@
-package com.example.giffer
+package com.example.giffer.app.main.presentation
 
 import android.content.Context
 import android.content.Intent
-import android.view.View
 import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.example.giffer.adapter.GifAdapter
-import com.example.giffer.model.Data
-import com.example.giffer.model.MainGif
-import com.example.giffer.repository.Repository
+import com.example.giffer.app.main.data.model.Data
+import com.example.giffer.app.main.data.model.GifRemote
+import com.example.giffer.app.main.domain.GifRepository
+import com.example.giffer.app.main.presentation.detail.GifDetailActivity
 import com.example.giffer.util.Constants
 import kotlinx.coroutines.launch
-import retrofit2.Response
 
-class MainViewModel(private val repository: Repository) : ViewModel() {
+class MainViewModel(private val repository: GifRepository) : ViewModel() {
 
-    private val _gifResponse: MutableLiveData<Response<MainGif>> = MutableLiveData()
-    private val _gifTrendResponse: MutableLiveData<Response<MainGif>> = MutableLiveData()
+    private val _gifResponse: MutableLiveData<GifRemote> = MutableLiveData()
+    private val _gifTrendResponse: MutableLiveData<GifRemote> = MutableLiveData()
 
-    val gifResponse: LiveData<Response<MainGif>>
-        get() = _gifResponse
-    val gifTrendResponse: LiveData<Response<MainGif>>
-        get() = _gifTrendResponse
+    val gifResponse: LiveData<GifRemote> = _gifResponse
+    val gifTrendResponse: LiveData<GifRemote> = _gifTrendResponse
 
     private lateinit var recyclerView: RecyclerView
 
@@ -37,21 +31,21 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
 
     fun getGifs(query: String, et: EditText) {
         viewModelScope.launch {
-            val response = repository.getGifs(query)
-            _gifResponse.value = response
+            val main = repository.loadGifs(query)
+            _gifResponse.value = main
         }
         category = et.text.toString()
     }
 
     fun getTrendGifs() {
         viewModelScope.launch {
-            val response = repository.getTrendGifs()
-            _gifTrendResponse.value = response
+            val main = repository.loadTrendGifs()
+            _gifTrendResponse.value = main
         }
     }
 
     fun initIntent(context: Context, gif: Data): Intent {
-        val intent = Intent(context, GifActivity::class.java)
+        val intent = Intent(context, GifDetailActivity::class.java)
         intent.putExtra(Constants.CURRENT_GIF_URL, gif.images.original.url)
         intent.putExtra(Constants.CURRENT_GIF_TITLE, gif.title)
         return intent

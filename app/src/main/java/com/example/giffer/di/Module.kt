@@ -1,8 +1,11 @@
-package com.example.giffer
+package com.example.giffer.di
 
 import android.app.Application
-import com.example.giffer.api.GiphyApi
-import com.example.giffer.repository.Repository
+import com.example.giffer.app.main.presentation.detail.GifDetailViewModel
+import com.example.giffer.app.main.presentation.MainViewModel
+import com.example.giffer.framework.remote.GiphyApi
+import com.example.giffer.app.main.data.GifRepositoryImpl
+import com.example.giffer.app.main.domain.GifRepository
 import com.example.giffer.util.Constants
 import okhttp3.Cache
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -15,14 +18,14 @@ val mainViewModelModule = module {
 }
 
 val gifViewModelModule = module {
-    viewModel { GifViewModel() }
+    viewModel { GifDetailViewModel() }
 }
 
 val repository = module {
-    fun provideRepository(api: GiphyApi): Repository {
-        return Repository(api)
+    fun provideRepository(api: GiphyApi): GifRepositoryImpl {
+        return GifRepositoryImpl(api)
     }
-    single { provideRepository(get()) }
+    single<GifRepository> { provideRepository(get()) }
 }
 
 val apiModule = module {
